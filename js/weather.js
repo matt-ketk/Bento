@@ -9,11 +9,11 @@ weather.temperature = {
 };
 
 // Change to 'F' for Fahrenheit
-var tempUnit = 'C';
+var tempUnit = 'K';
 
-const KELVIN = 273.15;
+const KELVIN_CONVERT = 273.15;
 // Use your own key for the Weather, Get it here: https://openweathermap.org/
-const key = 'aa5b0a76dfbf87541928fb3cc32d3d69';
+// const key = 'abcdefg';
 
 // Set Position function
 setPosition();
@@ -21,15 +21,15 @@ setPosition();
 function setPosition(position) {
     // Here you can change your position
     // You can use https://www.latlong.net/ to get it! (I use San Francisco as an example)
-    let latitude = 37.774929;
-    let longitude = -122.419418;
+    // let latitude = 37.774929;
+    // let longitude = -122.419418;
 
-    getWeather(latitude, longitude);
+    getWeather(config.latitude, config.longitude);
 }
 
 // Get the Weather data
 function getWeather(latitude, longitude) {
-    let api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
+    let api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${config.weatherKey}`;
 
     console.log(api);
 
@@ -39,8 +39,16 @@ function getWeather(latitude, longitude) {
             return data;
         })
         .then(function (data) {
-            let celsius = Math.floor(data.main.temp - KELVIN);
-            weather.temperature.value = (tempUnit == 'C') ? celsius : (celsius * 9/5) + 32;
+            let kelvin = Math.floor(data.main.temp);
+            let usedTemp = kelvin - KELVIN_CONVERT; // usedTemp starts off as celsius.
+            if (tempUnit == 'C') {
+                usedTemp = usedTemp;
+            } else if (tempUnit == 'K') {
+                usedTemp = kelvin;
+            } else if (tempUnit == 'F') {
+                usedTemp = (usedTemp * 9/5) + 32;
+            }
+            weather.temperature.value = usedTemp;
             weather.description = data.weather[0].description;
             weather.iconId = data.weather[0].icon;
         })
@@ -52,6 +60,7 @@ function getWeather(latitude, longitude) {
 // Display Weather info
 function displayWeather() {
     iconElement.innerHTML = `<img src="icons/OneDark/${weather.iconId}.png"/>`;
-    tempElement.innerHTML = `${weather.temperature.value}°<span class="darkfg">${tempUnit}</span>`;
+    tempElement.innerHTML = (tempUnit == 'K') ? `${weather.temperature.value} <span class="darkfg">${tempUnit}</span>` 
+        : `${weather.temperature.value}°<span class="darkfg">${tempUnit}</span>`;
     descElement.innerHTML = weather.description;
 }
