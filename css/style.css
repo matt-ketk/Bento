@@ -8,6 +8,7 @@
 
     /* Light theme  */
     --accent: #186efdaa;
+    --accentauth: #0ac917;
     --bg: #f5f5f5;
     --sbg: #e4e6e6;
     --fg: #3a3a3a;
@@ -19,10 +20,10 @@
     change the --imgcol value 
     to make the filter to your own */
 
-    /* --imgbg: url(/img/wal.jpg); */
+    --imgbg: url(../img/study-room.jpg);
     --imgcol: linear-gradient(
-        rgba(255, 255, 255, 0.7),
-        rgba(255, 255, 255, 0.7)
+        rgba(255, 255, 255, 0.5),
+        rgba(255, 255, 255, 0.5)
     );
 }
 @media only screen and (max-width: 68.75em) {
@@ -36,6 +37,7 @@
 /* Dark theme  */
 .darktheme {
     --accent: #186efd60;
+    --accentauth: #0ac917;
     --bg: #1e1f21;
     --sbg: #2c2d31;
     --fg: #d8dee9;
@@ -75,7 +77,6 @@ body {
     -webkit-appearance: none;
     -moz-appearance: none;
 }
-
 .bicon {
     width: 26px;
     height: 26px;
@@ -272,6 +273,7 @@ body {
     align-items: center;
     flex-direction: column;
 }
+
 @media only screen and (max-width: 68.75em) {
     .qlist {
         display: none;
@@ -292,7 +294,12 @@ body {
     color: var(--fg);
     height: 30px;
 }
-.qlist__link {
+.qagenda {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.qlist__link, .auth {
     text-decoration: none;
     font-size: var(--fses);
     color: var(--fg);
@@ -303,5 +310,21 @@ body {
 }
 .qlist__link:hover {
     background-color: var(--accent);
+    color: var(--fg);
+}
+.auth {
+    border: none;
+    box-shadow: none; 
+    width: 100px;
+    height: 30px;
+    background-color: var(--sbg);
+    position: absolute;
+    padding: 0px;
+    margin: 2em 6em 0 0;
+    right: 0;
+    top: 0;
+}
+.auth:hover {
+    background-color: var(--accentauth);
     color: var(--fg);
 }
