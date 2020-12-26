@@ -8,7 +8,6 @@
 
     /* Light theme  */
     --accent: #186efdaa;
-    --accentauth: #0ac917;
     --bg: #f5f5f5;
     --sbg: #e4e6e6;
     --fg: #3a3a3a;
@@ -20,7 +19,7 @@
     change the --imgcol value 
     to make the filter to your own */
 
-    --imgbg: url(../img/study-room.jpg);
+    --imgbg: url(../img/messy-scifi2.jpg);
     --imgcol: linear-gradient(
         rgba(255, 255, 255, 0.5),
         rgba(255, 255, 255, 0.5)
@@ -37,7 +36,6 @@
 /* Dark theme  */
 .darktheme {
     --accent: #186efd60;
-    --accentauth: #0ac917;
     --bg: #1e1f21;
     --sbg: #2c2d31;
     --fg: #d8dee9;
@@ -294,12 +292,7 @@ body {
     color: var(--fg);
     height: 30px;
 }
-.qagenda {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-.qlist__link, .auth {
+.qlist__link {
     text-decoration: none;
     font-size: var(--fses);
     color: var(--fg);
@@ -310,21 +303,5 @@ body {
 }
 .qlist__link:hover {
     background-color: var(--accent);
-    color: var(--fg);
-}
-.auth {
-    border: none;
-    box-shadow: none; 
-    width: 100px;
-    height: 30px;
-    background-color: var(--sbg);
-    position: absolute;
-    padding: 0px;
-    margin: 2em 6em 0 0;
-    right: 0;
-    top: 0;
-}
-.auth:hover {
-    background-color: var(--accentauth);
     color: var(--fg);
 }
