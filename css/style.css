@@ -179,6 +179,7 @@ body {
 #greetings {
     font-size: var(--fss);
     color: var(--fg);
+    text-align: center;
 }
 @media only screen and (max-width: 68.75em) {
     #greetings {
@@ -248,7 +249,7 @@ body {
     grid-column: 1;
 }
 .qlink__link-3-active {
-    background-color: var(--remind);
+    background: var(--remind);
 }
 .qlink__link-4 {
     grid-row: 2;

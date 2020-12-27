@@ -1,4 +1,4 @@
-const REMIND_TIME = 3;
+const REMIND_TIME = 3; // in hours
 
 var calendarButton = document.getElementById('calendar');
 var blinkOn = false;
