@@ -5,6 +5,8 @@
     --fsm: 85px;
     --fss: 30px;
     --fses: 18px;
+    /* Reminder */
+    --remind: #FF0000;
 
     /* Light theme  */
     --accent: #186efdaa;
@@ -241,9 +243,12 @@ body {
     grid-row: 1;
     grid-column: 2;
 }
-.qlink__link-3 {
+.qlink__link-3, .qlink__link-3-active {
     grid-row: 2;
     grid-column: 1;
+}
+.qlink__link-3-active {
+    background-color: var(--remind);
 }
 .qlink__link-4 {
     grid-row: 2;
